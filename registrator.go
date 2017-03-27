@@ -20,6 +20,7 @@ var versionChecker = usage.NewChecker("registrator", Version)
 
 var hostIp = flag.String("ip", "", "IP for ports mapped to the host")
 var internal = flag.Bool("internal", false, "Use internal ports instead of published ones")
+var network = flag.String("network", "", "Choose which network to expose IPs from")
 var explicit = flag.Bool("explicit", false, "Only register containers which have SERVICE_NAME label set")
 var servicePrefix = flag.String("service-prefix", "SERVICE", "Specify prefix for configuration labels and environment variables")
 var useIpFromLabel = flag.String("useIpFromLabel", "", "Use IP which is stored in a label assigned to the container")
@@ -101,6 +102,7 @@ func main() {
 	b, err := bridge.New(docker, flag.Arg(0), bridge.Config{
 		HostIp:          *hostIp,
 		Internal:        *internal,
+		Network:	 *network,
 		Explicit:        *explicit,
 		ServicePrefix:	 *servicePrefix,
 		UseIpFromLabel:  *useIpFromLabel,

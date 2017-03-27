@@ -24,6 +24,7 @@ type Config struct {
 	Internal        bool
 	Explicit        bool
 	ServicePrefix	string
+	Network 	string
 	UseIpFromLabel  string
 	ForceTags       string
 	RefreshTtl      int
